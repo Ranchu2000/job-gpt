@@ -19,8 +19,11 @@ const MessageForm = ({ messageContent }: MessageFormProps) => {
     });
     return response.json();
   };
+  useEffect(() => {
+    messageContent(conversation);
+  }, [conversation]);
+
   const clearChat = () => {
-    messageContent([]);
     setConversation([]);
   };
   useEffect(() => {
@@ -35,11 +38,7 @@ const MessageForm = ({ messageContent }: MessageFormProps) => {
   const handleSubmit = async (event: React.FormEvent) => {
     setIsPending(true);
     event.preventDefault();
-    setConversation((prevConversation) => {
-      const newConversation = [...prevConversation, prompt];
-      messageContent(newConversation); // Update parent state
-      return newConversation;
-    });
+    setConversation((prevConversation) => [...prevConversation, prompt]);
     const response = await fetch("/api/submitPrompt", {
       method: "POST",
       headers: {
@@ -60,17 +59,15 @@ const MessageForm = ({ messageContent }: MessageFormProps) => {
       try {
         responseText += decoder.decode(value);
         console.log(responseText);
-        setConversation((prevConversation) => {
-          const newConversation = [...prevConversation, responseText];
-          messageContent(newConversation); // Update parent state
-          return newConversation;
-        });
+        setConversation((prevConversation) => [
+          ...prevConversation,
+          responseText,
+        ]);
       } catch (e: any) {
         console.warn(e.message);
       }
     }
     setPrompt("");
-    messageContent(conversation);
     setIsPending(false);
   };
   return (
