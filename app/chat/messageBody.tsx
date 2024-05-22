@@ -12,7 +12,7 @@ const MessageBody = ({ conversation }: MessageBodyProps) => {
   };
 
   return (
-    <div className="my-2 h-96 flex-col overflow-y-auto bg-green-700 p-3">
+    <div className="my-2 h-96 flex-col overflow-y-auto rounded-lg bg-gray-900 p-3 shadow-lg">
       {conversation.map((message, index) => (
         <div key={index} className="">
           <div

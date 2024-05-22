@@ -71,7 +71,7 @@ const MessageForm = ({ messageContent }: MessageFormProps) => {
     setIsPending(false);
   };
   return (
-    <div className="flex items-center">
+    <div className="mt-5">
       <form onSubmit={handleSubmit} className="flex items-center gap-3">
         <div className="flex gap-5 font-semibold">
           <label htmlFor="prompt">Prompt</label>
@@ -83,12 +83,13 @@ const MessageForm = ({ messageContent }: MessageFormProps) => {
             aria-required
             required
             value={prompt}
+            className="rounded-lg border border-gray-700 bg-gray-800 p-2 text-white"
             onChange={(e) => setPrompt(e.target.value)}
           ></input>
         </div>
         <button
           type="submit"
-          className="rounded-md bg-slate-950 p-2 text-slate-50"
+          className="rounded-md bg-indigo-500 p-2 text-white hover:bg-indigo-600"
           disabled={isPending}
         >
           {isPending ? "Processing..." : "Send Prompt"}
@@ -96,7 +97,7 @@ const MessageForm = ({ messageContent }: MessageFormProps) => {
       </form>
       <button
         onClick={clearChat}
-        className="ml-auto rounded-md bg-slate-950 p-2 text-slate-50"
+        className="mt-5 rounded-md bg-red-500 p-2 text-white hover:bg-red-600"
       >
         Clear Chat
       </button>

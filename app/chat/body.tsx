@@ -9,8 +9,8 @@ const Body = () => {
     setConversation(newConversation);
   };
   return (
-    <div className="h-full bg-red-700 p-5">
-      <div className="text-xl font-semibold">Conversation</div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 p-5 text-white">
+      <div className="text-2xl font-bold mb-5">Conversation</div>
       <MessageBody conversation={conversation}></MessageBody>
       <MessageForm messageContent={handleConversationMessage}></MessageForm>
     </div>
