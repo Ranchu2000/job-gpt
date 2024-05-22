@@ -1,5 +1,4 @@
 import MessageContent from "./messageContent";
-import MessageInfo from "./messageInfo";
 import MessageProfile from "./messageProfile";
 interface MessageBodyProps {
   conversation: string[];
@@ -15,7 +14,7 @@ const MessageBody = ({ conversation }: MessageBodyProps) => {
   return (
     <div className="my-2 h-96 flex-col overflow-y-auto bg-green-700 p-3">
       {conversation.map((message, index) => (
-        <div className="">
+        <div key={index} className="">
           <div
             className={`m-2 flex  items-center space-x-4 ${index % 2 === 0 ? "justify-end" : "justify-start"}`}
           >
